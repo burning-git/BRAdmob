@@ -43,6 +43,7 @@ typedef void(^admobSelectBlcok)(id info,NSInteger index);
  *  属性
  */
 @property(assign,nonatomic) BOOL isPagingEnabled;
+@property(assign,nonatomic) BOOL isBounces;
 /**
  *  允许点击事件
  */

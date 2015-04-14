@@ -54,8 +54,9 @@
 
     [self addSubview:self.collectionView];
     self.collectionView.pagingEnabled=YES;
+    self.collectionView.bounces=NO;
+
     self.collectionView.backgroundColor=[UIColor whiteColor];
-    
     
     
     self.titileView=[[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.height-32, self.frame.size.width, 32)];
@@ -88,10 +89,10 @@
     self.pageControl.selected=NO;
 }
 
-//-(void)setIsBounces:(BOOL)isBounces{
-//    _isBounces=isBounces;
-//    self.collectionView.bounces=isBounces;
-//}
+-(void)setIsBounces:(BOOL)isBounces{
+    _isBounces=isBounces;
+    self.collectionView.bounces=isBounces;
+}
 -(void)setIsPagingEnabled:(BOOL)isPagingEnabled{
     _isPagingEnabled=isPagingEnabled;
     self.collectionView.pagingEnabled=isPagingEnabled;
@@ -114,8 +115,6 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
     
-//    [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-    
     if (!self.allowSelect) {
         return;
     }
@@ -137,13 +136,7 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     AdmobCollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:kIndexCell forIndexPath:indexPath];
-//    UILabel * line=[[UILabel alloc] initWithFrame:CGRectMake(self.topWidth-0.5, 0,0.5 ,CGRectGetHeight(cell.frame)-0.5)];
-//    line.backgroundColor=[UIColor lightGrayColor];
-//    
-//    if (!_isNeedCustomWidth) {
-//        [cell insertSubview:line atIndex:cell.subviews.count-1];
-//        
-//    }
+
     AdmobInfo *info=self.dataArray[indexPath.row];
     if (info.admobName.length<=0) {
         self.titileView.hidden=YES;
@@ -166,24 +159,12 @@
 
 
 #pragma mark--计算 pageConrtoll
-//-(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
-//    [self stopTimer:YES];
-//}
 
--(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    
-    
-    [NSObject cancelPreviousPerformRequestsWithTarget:self];
-
-    [self stopTimer:YES];
-
-}
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
 NSInteger index=scrollView.contentOffset.x/self.frame.size.width;
     
     self.pageControl.currentPage=index;
     indexScoller=index+1;
-    [self performSelector:@selector(deleyTime) withObject:nil afterDelay:self.autoTime];
 }
 /**
  *  延迟 定时器
