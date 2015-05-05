@@ -42,7 +42,7 @@
     flowLayout.minimumInteritemSpacing=0.f;//左右间隔
     flowLayout.minimumLineSpacing=0.f;
     flowLayout.scrollDirection=UICollectionViewScrollDirectionHorizontal;
-    self.collectionView=[[UICollectionView alloc] initWithFrame:CGRectMake(0,0,kAdmobScreenWidth,self.frame.size.height) collectionViewLayout:flowLayout];
+    self.collectionView=[[UICollectionView alloc] initWithFrame:CGRectMake(0,0,self.frame.size.width,self.frame.size.height) collectionViewLayout:flowLayout];
     
     self.collectionView.delegate=self;
     self.collectionView.dataSource=self;
@@ -153,7 +153,7 @@
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    return CGSizeMake(kAdmobScreenWidth, self.frame.size.height);
+    return CGSizeMake(self.frame.size.width, self.frame.size.height);
 }
 
 

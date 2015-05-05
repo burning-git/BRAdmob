@@ -40,7 +40,7 @@
     // info5.admobName=@"5";
     
     
-    BRAdmobView * view=[[BRAdmobView alloc] initWithFrame:CGRectMake(0, 64, 320, 150) andData:@[info1,info2,info3,info4,info5] andInViewe:self.view];
+    BRAdmobView * view=[[BRAdmobView alloc] initWithFrame:CGRectMake(10, 64, 300, 150) andData:@[info1,info2,info3,info4,info5] andInViewe:self.view];
     [view addPageControlViewWithSize:CGSizeMake(10, 10)];
     view.isAutoScoller=YES;
     [self.view addSubview:view];
