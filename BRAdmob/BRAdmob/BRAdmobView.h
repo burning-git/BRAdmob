@@ -18,6 +18,13 @@
 
 
 typedef void(^admobSelectBlcok)(id info,NSInteger index);
+
+typedef NS_ENUM(NSUInteger, KPageControlPostion) {
+    KPageControlPostion_Left=1,
+    KPageControlPostion_Middle,
+    KPageControlPostion_right
+};
+
 @interface BRAdmobView : UIView<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,UICollectionViewDelegate>
 {
     NSInteger indexScoller;
@@ -76,8 +83,7 @@ typedef void(^admobSelectBlcok)(id info,NSInteger index);
  *
  *  @param size <#size description#>
  */
--(void)addPageControlViewWithSize:(CGSize)size;
-
+-(void)addPageControlViewWithSize:(CGSize)size WithPostion:(KPageControlPostion)postion;
 /**
  *  刷新数据，并且刷新PageControl
  *

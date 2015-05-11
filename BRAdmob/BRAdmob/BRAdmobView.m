@@ -67,7 +67,7 @@
     _titileLabel.textAlignment=NSTextAlignmentCenter;
     //0,6,192,21;
 }
--(void)addPageControlViewWithSize:(CGSize)size
+-(void)addPageControlViewWithSize:(CGSize)size WithPostion:(KPageControlPostion)postion
 {
    
     
@@ -78,7 +78,22 @@
     float witdth=size.width* self.dataArray.count + margin*(self.dataArray.count-1);
     float height=size.height;
     
-    self.pageControl=[[UIPageControl alloc] initWithFrame:CGRectMake(self.frame.size.width-witdth, self.frame.size.height-height-(32-height)/2, witdth, height)];
+    
+    
+    CGRect frame=CGRectMake(self.frame.size.width-witdth, self.frame.size.height-height-(32-height)/2, witdth, height);
+    
+    if (postion==KPageControlPostion_Left) {
+        
+        
+        frame.origin.x=5;
+        
+    }
+    else if (postion==KPageControlPostion_Middle){
+        
+        frame.origin.x=(self.frame.size.width-witdth)/2;
+    }
+    
+    self.pageControl=[[UIPageControl alloc] initWithFrame:frame];
     self.pageControl.numberOfPages=self.dataArray.count;
     self.pageControl.currentPage=0;
 

@@ -41,7 +41,7 @@
     
     
     BRAdmobView * view=[[BRAdmobView alloc] initWithFrame:CGRectMake(10, 64, 300, 150) andData:@[info1,info2,info3,info4,info5] andInViewe:self.view];
-    [view addPageControlViewWithSize:CGSizeMake(10, 10)];
+    [view addPageControlViewWithSize:CGSizeMake(10, 10) WithPostion:KPageControlPostion_Left];
     view.isAutoScoller=YES;
     [self.view addSubview:view];
     
